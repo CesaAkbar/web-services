@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block title %} Dashboard - Data Service {% endblock %}
+{% block title_content %} Dashboard {% endblock %}
+
+{% block content %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+    </ol>
+</nav>
+    <div class="column">
+        <div class="row">
+            <div class="col">
+                <div class="border rounded overflow-hidden">
+                    <div class="py-2 px-3 mb-3" style="background-color: hsl(0, 0%, 95%);">
+                        Chart Pie
+                    </div>
+                    <div class="px-3 pb-2">
+                        <canvas id="fooChart" style="width:100%; max-width:700px"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="border rounded overflow-hidden">
+                    <div class="py-2 px-3 mb-3" style="background-color: hsl(0, 0%, 95%);">
+                        Chart Pie
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // START
+        const xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
+        const yValues = [55, 49, 44, 24, 15];
+        const barColors = ["red", "green","blue","orange","brown"];
+
+        const fooChart = new Chart("fooChart", {
+            type: "bar",
+            data: {
+                labels: xValues,
+                    datasets: [{
+                    backgroundColor: barColors,
+                    data: yValues
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true
+            }
+        });
+
+        // END
+    </script>
+{% endblock %}

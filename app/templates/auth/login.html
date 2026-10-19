@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+
+{% block title %} Login - Data Service {% endblock %}
+
+{% block layout %}
+<div class="d-grid justify-content-center align-items-center" style="min-height: 100dvh;">
+    <form class="p-3 border bg-white" style="width: 480px; height: fit-content;" method="POST">
+        <h3 class="text-center">Login</h3>
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input class="form-control" id="username" placeholder="Enter name" name="username" required />
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Password" name="password"
+                required />
+        </div>
+        <div class="d-grid mb-3">
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        </div>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            <div class="flashes">
+                {% for category, message in messages %}
+                    <p class="py-1 text-center {{ category }}">{{ message }}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+        {% endwith %}
+    </form>
+</div>
+{% endblock %}

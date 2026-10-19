@@ -1,0 +1,16 @@
+{% extends "index.html" %}
+{% include 'components/navbar.html' %}
+
+{% block title %} {{title}} - Data Service {% endblock %}
+
+{% block layout %}
+<div class="d-flex h-100">
+    {% include 'components/sidebar.html' %}
+    <div class="container-fluid" style="padding-top: 4.5rem !important; overflow-y: hidden; padding-bottom: 2.5rem;">
+        <div class="pb-4 h-100" style="overflow-y: auto; overflow-x: auto;">
+            <h1 class="mb-4">{% block title_content %} {% endblock %}</h1>
+            {% block content %} {% endblock %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+
+{% block title %} Service - Data Service {% endblock %}
+{% block title_content %} Data Service {% endblock %}
+
+{% block content %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ url_for('home') }}">Dashboard</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Data Service</li>
+    </ol>
+</nav>
+<!-- table  -->
+<div class="border rounded">
+    <div class="py-2 px-3" style="background-color: hsl(0, 0%, 95%);">
+        Table Service
+    </div>
+    <table class="table table-sm table-bordered table-hover small" style="margin: 0;">
+        <thead class="thead-light">
+            <tr class="align-middle">
+                <th class="px-2">No. SPK</th>
+                <th class="px-2">Customer</th>
+                <th class="px-2">Alamat</th>
+                <th class="px-2">No. Telepon</th>
+                <th class="px-2">Tgl. SPK</th>
+                <th class="px-2">Tgl. Kunjungan</th>
+                <th class="px-2">Tgl. Selesai</th>
+                <th class="px-2">Remark Unit</th>
+                <th class="px-2">Teknisi</th>
+                <th class="px-2">Waktu Service</th>
+                <th class="px-2 text-center">Status</th>
+                <th class="px-2 text-center">Keterangan</th>
+                <th class="px-2 text-center" colspan="2">Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in service %}
+                <tr>
+                    <td class="px-2">{{data.no_spk}}</td>
+                    <td class="px-2">{{data.nama}}</td>
+                    <td class="px-2">{{data.alamat}}</td>
+                    <td class="px-2">{{data.no_tlpn}}</td>
+                    <td class="px-2">{{data.tgl_spk}}</td>
+                    <td class="px-2">{{data.tanggal_kunjungan}}</td>
+                    <td class="px-2">{{data.tanggal_selesai}}</td>
+                    <td class="px-2">{{data.remark_unit}}</td>
+                    <td class="px-2">{{data['teknisi.nama']}}</td>
+                    <td class="px-2 text-center">
+                        {% if data.waktu_service is none %} 
+                            belum ada 
+                        {%else%} 
+                            {{data.waktu_service}} Hari
+                        {% endif %} 
+                    </td>
+                    <td class="px-2 text-center">{{ data['status_pekerjaan'] }}</td>
+                    <td class="px-2 text-center">{{ data['keterangan_service'] }}</td>
+                    {% if data['service_ac.id'] %} 
+                        <td class="table-fit text-center px-2">
+                            <form action="{{ url_for('ubah_services', id=data['service_ac.id'])}}">
+                                <button type="submit" class="btn btn-secondary btn-sm">Ubah</button>
+                            </form>       
+                        </td>   
+                        <td class="table-fit text-center px-2">
+                            <form action="{{ url_for('hapus_services', id=data['service_ac.id'])}}">
+                                <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                            </form>
+                        </td>                   
+                        {%else%}
+                        <td class="table-fit text-center px-2" colspan="2">
+                            <form action="{{ url_for('tambah_services', id=data.id)}}">
+                                <button type="submit" class="btn btn-success btn-sm">Jadwal</button>
+                            </form>
+                        </td>
+                    {% endif %} 
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table> 
+</div>
+<script>
+    document.querySelector('#tambah-service').addEventListener('click', function() {
+      var modalService = new bootstrap.Modal(document.getElementById('modalService'));
+      modalService.show();
+    });    
+</script>
+{% endblock %}

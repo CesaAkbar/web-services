@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %} Tambah Teknisi - Data Service {% endblock %}
+{% block title_content %} Tambah Teknisi {% endblock %}
+
+{% block content %}
+<div class="container">
+    <form action="{{ url_for('add_teknisi') }}" method="POST" class="row">
+        <div class="col-6">
+            <div class="mb-3">
+                <label class="form-label">Nama Teknisi <i style="color: red;">*</i></label>
+                <input class="form-control" required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">No. Telepon <i style="color: red;">*</i></label>
+                <input class="form-control" required />
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

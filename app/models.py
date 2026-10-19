@@ -1,7 +1,5 @@
 import pymysql
 from pymysql.cursors import DictCursor
-from flask import jsonify
-from mysql.connector import cursor
 
 
 class Database:

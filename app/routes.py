@@ -1,8 +1,5 @@
-import os
-from flask import render_template, request, redirect, flash, url_for, session, jsonify
-from itsdangerous import serializer
-
 from run_app import app
+from flask import render_template, request, redirect, flash, url_for, session, jsonify
 from app.models import Database, Teknisi, Services, Login, Customers, Dispath, Complation
 
 # Load variables from the .env file

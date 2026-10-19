@@ -1,16 +1,17 @@
-from MySQLdb.cursors import DictCursor
-import MySQLdb
+import pymysql
+from pymysql.cursors import DictCursor
 from flask import jsonify
 from mysql.connector import cursor
 
 
 class Database:
     def koneksi(self):
-        return MySQLdb.connect(
+        return pymysql.connect(
             host="localhost",
             user="root",
-            passwd="rikimaru14",
-            database="service"
+            password="rikimaru14",
+            database="service",
+            cursorclass=DictCursor
         )
 
 class Services:

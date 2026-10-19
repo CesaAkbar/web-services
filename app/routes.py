@@ -229,5 +229,11 @@ def page_not_found(error):
 def user_setting():
     return render_template('account/user-setting.html')
 
+@app.route("/test-db")
+def test_db():
+    conn = Database().koneksi()
+    conn.close()
+    return "Database Connected"
+
 
 

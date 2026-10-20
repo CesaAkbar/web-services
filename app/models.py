@@ -302,4 +302,3 @@ class Login (object):
         n = (cursor.fetchone()) [0]
         cursor.close()
         koneksi.close()
-        return True if n == 1 else False

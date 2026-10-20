@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
-{% block title %} Ubah Teknisi - Data Service {% endblock %}
-{% block title_content %} Ubah Teknisi {% endblock %}
+{% block title %} Ubah Karyawan - Data Service {% endblock %}
+{% block title_content %} Ubah Karyawan {% endblock %}
 
 {% block content %}
 <nav aria-label="breadcrumb">
@@ -14,7 +14,7 @@
 <form action="{{ url_for('ubah_teknisi', id=data.id) }}" method="POST" class="row">
     <div class="col-6">
         <div class="mb-3">
-            <label class="form-label">Nama Teknisi<i style="color: red;">*</i></label>
+            <label class="form-label">Nama Karyawan<i style="color: red;">*</i></label>
             <input class="form-control" required name=nama value="{{ data.nama }}" />
         </div>
         <div class="mb-3">

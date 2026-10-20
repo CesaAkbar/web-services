@@ -2,14 +2,14 @@
   	<div class="modal-dialog">
     	<div class="modal-content">
       		<div class="modal-header">
-        		<h5 class="modal-title" id="modalLabel">Tambah Teknisi</h5>
+        		<h5 class="modal-title" id="modalLabel">Tambah Karyawan</h5>
         		<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       		</div>
       		<div class="modal-body">
       	  		<form action="{{ url_for('tambah_teknisi') }}" method="POST">
       	    		<div class="row">
       	      			<div class="col mb-3">
-							<label for="namaInput" class="mb-1">Nama Teknisi:</label>
+							<label for="namaInput" class="mb-1">Nama Karyawan:</label>
       	        			<input class="form-control" name="nama" id="namaInput" required placeholder="Nama Teknisi" />
       	      			</div>
       	      			<div class="col mb-3">

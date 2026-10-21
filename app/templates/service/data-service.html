@@ -40,9 +40,15 @@
                     <td class="px-2">{{data.nama}}</td>
                     <td class="px-2">{{data.alamat}}</td>
                     <td class="px-2">{{data.no_tlpn}}</td>
-                    <td class="px-2">{{data.tgl_spk}}</td>
-                    <td class="px-2">{{data.tanggal_kunjungan}}</td>
-                    <td class="px-2">{{data.tanggal_selesai}}</td>
+                    <td class="px-2">
+                        {{ data.tgl_spk.strftime('%d-%m-%Y') if data.tanggal_kunjungan else 'None' }}
+                    </td>
+                    <td class="px-2">
+                        {{ data.tanggal_kunjungan.strftime('%d-%m-%Y') if data.tanggal_kunjungan else 'None' }}
+                    </td>
+                    <td class="px-2">
+                        {{ data.tanggal_selesai.strftime('%d-%m-%Y') if data.tanggal_selesai else 'None' }}
+                    </td>
                     <td class="px-2">{{data.remark_unit}}</td>
                     <td class="px-2">{{data['teknisi.nama']}}</td>
                     <td class="px-2 text-center">

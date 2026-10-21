@@ -1,10 +1,11 @@
-<aside class="d-none text-white py-4 position-fixed" style="background-color: hsla(0, 0%, 0%, 0.90); width: 250px; height: 100%; padding-top: 5rem !important;" id="sidebar">
+<aside class="d-none text-white pt-4" style="background-color: hsla(0, 0%, 0%, 0.90); width: 250px; height: 100%; padding-top: 5rem !important; z-index: 99;" id="sidebar">
+  <div class="position-relative h-100">
     <p class="fs-6 fw-semibold mb-2 text-white-50 ps-3">Menu</p>
         <nav class="mb-4">
             <a class="hover-menu-sidebar fw-medium ps-4 py-2 text-light fw-regular py-1 d-block" href="{{ url_for('home') }}">Dashboard</a>
             <a class="hover-menu-sidebar fw-medium ps-4 py-2 text-light fw-regular py-1 d-block" href="{{ url_for('data_customer') }}">Data Customer</a>
             <a class="hover-menu-sidebar fw-medium ps-4 py-2 text-light fw-regular py-1 d-block" href="{{ url_for('data_services') }}">Data Service</a>
-            <a class="hover-menu-sidebar fw-medium ps-4 py-2 text-light fw-regular py-1 d-block" href="{{ url_for('data_teknisi') }}">Data Karyawan</a>
+            <a class="hover-menu-sidebar fw-medium ps-4 py-2 text-light fw-regular py-1 d-block" href="{{ url_for('data_teknisi') }}">Data Teknisi</a>
         </nav>
     <p class="fs-6 fw-semibold mb-2 text-white-50 ps-3">Setting</p>
         <nav>
@@ -14,4 +15,5 @@
         <p class="fw-medium text-white-50 mb-1">Login sebagai:</p>
         <p class="fw-semibold">Admin</p>
     </div>
+  </div>
 </aside>

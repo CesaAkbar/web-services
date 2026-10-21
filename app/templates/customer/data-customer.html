@@ -11,66 +11,68 @@
         <li class="breadcrumb-item active" aria-current="page">Data Customer</li>
     </ol>
 </nav>
-    <div class="d-flex mb-3 justify-content-between">
-        <div>
-            <button class="btn btn-primary" id="tambah-customer">Tambah</button>
-        </div>
+<div class="d-flex mb-3 justify-content-between">
+    <div>
+        <button class="btn btn-primary" id="tambah-customer">Tambah</button>
     </div>
-    <!-- table -->
-    <div class="border rounded">
-        <div class="py-2 px-3" style="background-color: hsl(0, 0%, 95%);">
-            Table Customer
-        </div>
-        <table class="table table-sm table-bordered table-hover small" style="margin: 0;">
-            <thead class="thead-light">
-                <tr class="align-middle">
-                    <th class="px-2">No. Spk</th>
-                    <th class="px-2">Tgl Spk</th>
-                    <th class="px-2">Nama</th>
-                    <th class="px-2">Alamat</th>
-                    <th class="px-2">No. Telepon</th>
-                    <th class="px-2">Sn Indoor</th>
-                    <th class="px-2">Model Indoor</th>
-                    <th class="px-2">Sn Outdoor</th>
-                    <th class="px-2">Model Outdoor</th>
-                    <th class="px-2">Kerusakan</th>
-                    <th class="px-2">garansi</th>
-                    <th class="px-2 text-center" colspan="2">Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for data in customer %}
-                <tr>
-                    <td class="px-2">{{data.no_spk}}</td>
-                    <td class="px-2">{{data.tgl_spk}}</td> 
-                    <td class="px-2">{{data.nama}}</td>
-                    <td class="px-2">{{data.alamat}}</td>
-                    <td class="px-2">{{data.no_tlpn}}</td>
-                    <td class="px-2">{{data.sn_indoor}}</td>
-                    <td class="px-2">{{data.model_indoor}}</td>
-                    <td class="px-2">{{data.sn_outdoor}}</td>
-                    <td class="px-2">{{data.model_outdoor}}</td>
-                    <td class="px-2">{{data.kerusakan}}</td>
-                    <td class="px-2">{{data.garansi}}</td>
-                    <td class="px-2 text-center">
-                        <form action="{{ url_for('ubah_customer', id=data.id) }}">
-                            <button type="submit" class="btn btn-secondary btn-sm">Ubah</button>
-                        </form>
-                    </td>
-                    <td class="px-2 text-center">
-                        <form action="{{ url_for('hapus_customer', id=data.id) }}" method="POST">
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin hapus?');">Hapus</button>
-                        </form>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table> 
+</div>
+<!-- table -->
+<div class="border rounded">
+    <div class="py-2 px-3" style="background-color: hsl(0, 0%, 95%);">
+        Table Customer
     </div>
-    <script>
-        document.querySelector('#tambah-customer').addEventListener('click', function() {
-          var modalCustomer = new bootstrap.Modal(document.getElementById('modalCustomer'));
-          modalCustomer.show();
-        });    
-    </script>
+    <table class="table table-sm table-bordered table-hover small" style="margin: 0;">
+        <thead class="thead-light">
+            <tr class="align-middle">
+                <th class="px-2">No. Spk</th>
+                <th class="px-2">Tgl Spk</th>
+                <th class="px-2">Nama</th>
+                <th class="px-2">Alamat</th>
+                <th class="px-2">No. Telepon</th>
+                <th class="px-2">Sn Indoor</th>
+                <th class="px-2">Model Indoor</th>
+                <th class="px-2">Sn Outdoor</th>
+                <th class="px-2">Model Outdoor</th>
+                <th class="px-2">Kerusakan</th>
+                <th class="px-2">garansi</th>
+                <th class="px-2 text-center" colspan="2">Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in customer %}
+            <tr>
+                <td class="px-2">{{data.no_spk}}</td>
+                <td class="px-2">
+                    {{ data.tgl_spk.strftime('%d-%m-%Y') if data.tanggal_kunjungan else 'None' }}
+                </td>
+                <td class="px-2">{{data.nama}}</td>
+                <td class="px-2">{{data.alamat}}</td>
+                <td class="px-2">{{data.no_tlpn}}</td>
+                <td class="px-2">{{data.sn_indoor}}</td>
+                <td class="px-2">{{data.model_indoor}}</td>
+                <td class="px-2">{{data.sn_outdoor}}</td>
+                <td class="px-2">{{data.model_outdoor}}</td>
+                <td class="px-2">{{data.kerusakan}}</td>
+                <td class="px-2">{{data.garansi}}</td>
+                <td class="px-2 text-center">
+                    <form action="{{ url_for('ubah_customer', id=data.id) }}">
+                        <button type="submit" class="btn btn-secondary btn-sm">Ubah</button>
+                    </form>
+                </td>
+                <td class="px-2 text-center">
+                    <form action="{{ url_for('hapus_customer', id=data.id) }}" method="POST">
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin hapus?');">Hapus</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<script>
+    document.querySelector('#tambah-customer').addEventListener('click', function() {
+      var modalCustomer = new bootstrap.Modal(document.getElementById('modalCustomer'));
+      modalCustomer.show();
+    });
+</script>
 {% endblock %}

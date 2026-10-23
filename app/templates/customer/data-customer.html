@@ -11,55 +11,54 @@
         <li class="breadcrumb-item active" aria-current="page">Data Customer</li>
     </ol>
 </nav>
-<div class="d-flex mb-3 justify-content-between">
-    <div>
-        <button class="btn btn-primary" id="tambah-customer">Tambah</button>
-    </div>
-</div>
-<!-- table -->
-<div class="border rounded">
-    <div class="py-2 px-3" style="background-color: hsl(0, 0%, 95%);">
-        Table Customer
-    </div>
-    <table class="table table-sm table-bordered table-hover small" style="margin: 0;">
+<div class="border rounded p-3">
+    <div class="d-flex align-items-center justify-content-between">
+    	<p class="fw-bold text-decoration-underline">DataTable Customer</p>
+		<div class="d-flex mb-3 justify-content-between">
+			<button class="btn btn-primary" id="tambah-customer">Tambah</button>
+		</div>
+  	</div>
+    <table id="example" class="table table-sm table-bordered table-striped table-hover">
         <thead class="thead-light">
             <tr class="align-middle">
-                <th class="px-2">No. Spk</th>
-                <th class="px-2">Tgl Spk</th>
-                <th class="px-2">Nama</th>
-                <th class="px-2">Alamat</th>
-                <th class="px-2">No. Telepon</th>
-                <th class="px-2">Sn Indoor</th>
-                <th class="px-2">Model Indoor</th>
-                <th class="px-2">Sn Outdoor</th>
-                <th class="px-2">Model Outdoor</th>
-                <th class="px-2">Kerusakan</th>
-                <th class="px-2">garansi</th>
-                <th class="px-2 text-center" colspan="2">Aksi</th>
+                <th class="table-fit">No.</th>
+                <th>No. Spk</th>
+                <th class="text-center">Tgl Spk</th>
+                <th>Customer</th>
+                <th class="text-center">Alamat</th>
+                <th>No. Telepon</th>
+                <th>Sn Indoor</th>
+                <th>Model Indoor</th>
+                <th>Sn Outdoor</th>
+                <th>Model Outdoor</th>
+                <th>Kerusakan</th>
+                <th class="text-center">garansi</th>
+                <th class="table-fit text-center" colspan="2">Aksi</th>
             </tr>
         </thead>
         <tbody>
             {% for data in customer %}
             <tr>
-                <td class="px-2">{{data.no_spk}}</td>
-                <td class="px-2">
-                    {{ data.tgl_spk.strftime('%d-%m-%Y') if data.tanggal_kunjungan else 'None' }}
+                <td class="text-center">{{loop.index}}</td>
+                <td>{{data.no_spk}}</td>
+                <td class="table-fit">
+                    {{ data.tgl_spk.strftime('%d-%m-%Y') if data.tgl_spk else 'None' }}
                 </td>
-                <td class="px-2">{{data.nama}}</td>
-                <td class="px-2">{{data.alamat}}</td>
-                <td class="px-2">{{data.no_tlpn}}</td>
-                <td class="px-2">{{data.sn_indoor}}</td>
-                <td class="px-2">{{data.model_indoor}}</td>
-                <td class="px-2">{{data.sn_outdoor}}</td>
-                <td class="px-2">{{data.model_outdoor}}</td>
-                <td class="px-2">{{data.kerusakan}}</td>
-                <td class="px-2">{{data.garansi}}</td>
-                <td class="px-2 text-center">
+                <td>{{data.nama}}</td>
+                <td>{{data.alamat}}</td>
+                <td class="text-center table-fit">{{data.no_tlpn}}</td>
+                <td>{{data.sn_indoor}}</td>
+                <td>{{data.model_indoor}}</td>
+                <td>{{data.sn_outdoor}}</td>
+                <td>{{data.model_outdoor}}</td>
+                <td>{{data.kerusakan}}</td>
+                <td class="table-fit text-center">{{data.garansi}}</td>
+                <td class="text-center">
                     <form action="{{ url_for('ubah_customer', id=data.id) }}">
                         <button type="submit" class="btn btn-secondary btn-sm">Ubah</button>
                     </form>
                 </td>
-                <td class="px-2 text-center">
+                <td class="text-center">
                     <form action="{{ url_for('hapus_customer', id=data.id) }}" method="POST">
                         <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin hapus?');">Hapus</button>
                     </form>

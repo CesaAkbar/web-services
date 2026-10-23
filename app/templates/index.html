@@ -16,25 +16,22 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" />
 
   <!-- DataTable Bootstrapt CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.8/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdn.datatables.net/3.1.4/css/dataTables.bootstrap5.min.css">
-
-  <script src="{{ url_for('static', filename='js/chart.js') }}"></script>
-
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/dataTables.bootstrap5.min.css') }}">
 
   <!-- DataTable Bootstrapt Script -->
-	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.8/js/bootstrap.bundle.min.js"></script>
-	<script defer src="https://cdn.datatables.net/3.1.4/js/dataTables.min.js"></script>
-	<script defer src="https://cdn.datatables.net/3.1.4/js/dataTables.bootstrap5.min.js"></script>
-
+	<script defer src="{{ url_for('static', filename='js/dataTables.min.js') }}"></script>
+  <script defer src="{{ url_for('static', filename='js/dataTables.bootstrap5.min.js')}}"></script>
   <script defer src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+  <!-- Chart Script -->
+  <script src="{{ url_for('static', filename='js/chart.js') }}"></script>
+
+  <script defer src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
 </head>
 
 <body>
   {% block layout %}
 
   {% endblock %}
-  <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
 </body>
-
 </html>

@@ -9,48 +9,135 @@
         <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
     </ol>
 </nav>
-    <div class="column">
-        <div class="row">
-            <div class="col">
-                <div class="border rounded overflow-hidden">
-                    <div class="py-2 px-3 mb-3" style="background-color: hsl(0, 0%, 95%);">
-                        Chart Pie
-                    </div>
-                    <div class="px-3 pb-2">
-                        <canvas id="fooChart" style="width:100%; max-width:700px"></canvas>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="border rounded overflow-hidden">
-                    <div class="py-2 px-3 mb-3" style="background-color: hsl(0, 0%, 95%);">
-                        Chart Pie
-                    </div>
+<div class="column">
+    <div class="card mb-4">
+        <div class="card-body text-center h3">
+            Key Performance Indicators (KPI) CV. TWIN ANUGRAH JAYA
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-xl-3 col-md-6">
+            <div class="card mb-4">
+                <div class="card-header h4">Total Perkerjaan</div>
+                <div class="card-body text-center h1">313</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small stretched-link" href="#">Lihat Selengkap</a>
+                    <div class="small"><i class="fas fa-angle-right"></i></div>
                 </div>
             </div>
         </div>
     </div>
-    <script>
-        // START
-        const xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
-        const yValues = [55, 49, 44, 24, 15];
-        const barColors = ["red", "green","blue","orange","brown"];
+    <div class="row mb-3">
+        <div class="col">
+            <div class="border rounded overflow-hidden">
+                <div class="py-2 px-3 mb-3 h5" style="background-color: hsl(0, 0%, 95%);">
+                    1 Hari Kunjungan
+                </div>
+                <div class="px-3 pb-2" style="height: 320px;">
+                    <canvas id="chartSatuHariKunjungan" class="mx-auto"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="border rounded overflow-hidden">
+                <div class="py-2 px-3 mb-3 h5" style="background-color: hsl(0, 0%, 95%);">
+                    3 Hari Selesai
+                </div>
+                <div class="px-3 pb-2" style="height: 320px;">
+                    <canvas id="chartTigaHariSelesai" class="mx-auto"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="border rounded overflow-hidden">
+                <div class="py-2 px-3 mb-3 h5" style="background-color: hsl(0, 0%, 95%);">
+                    Status Garansi
+                </div>
+                <div class="px-3 pb-2" style="height: 320px;">
+                    <canvas id="chartStatusGaransi" class="mx-auto"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        const fooChart = new Chart("fooChart", {
-            type: "bar",
-            data: {
-                labels: xValues,
-                    datasets: [{
-                    backgroundColor: barColors,
-                    data: yValues
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: true
-            }
-        });
+    <div class="row">
+        <div class="col">
+            <div class="border rounded overflow-hidden">
+                <div class="py-2 px-3 mb-3 h5" style="background-color: hsl(0, 0%, 95%);">
+                    Kinerja Karyawan
+                </div>
+                <div class="px-3 pb-2" style="height: 320px;">
+                    <canvas id="fooChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="border rounded overflow-hidden">
+                <div class="py-2 px-3 mb-3 h5" style="background-color: hsl(0, 0%, 95%);">
+                    Seri Unit
+                </div>
+                <div class="px-3 pb-2" style="height: 320px;">
 
-        // END
-    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    const chartSatuHariKunjungan = new Chart("chartSatuHariKunjungan", {
+        type: 'pie',
+        data: {
+            labels: ["Sukses", "Tidak Sukses"],
+            datasets: [{
+                data: [12, 19]
+            }]
+        },
+    });
+
+    const chartTigaHariSelesai = new Chart("chartTigaHariSelesai", {
+        type: 'pie',
+        data: {
+            labels: ['Sukses', 'Tidak Sukses'],
+            datasets: [{
+                data: [12, 19]
+            }]
+        }
+    });
+
+    const charStatusGaransi = new Chart("chartStatusGaransi", {
+        type: 'pie',
+        data: {
+            labels: ["Out Of Warranty", "Under Warranty"],
+            datasets: [{
+                data: [1, 3],
+                backgroundColor: [
+                    'rgba(252, 186, 3, 0.7)',
+                    'rgba(3, 94, 252, 0.7)'
+                ]
+            }]
+        }
+    });
+
+
+    // START
+    const xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
+    const yValues = [55, 49, 44, 24, 15];
+    const barColors = ["red", "green", "blue", "orange", "brown"];
+
+    const fooChart = new Chart("fooChart", {
+        type: "bar",
+        data: {
+            labels: xValues,
+            datasets: [{
+                backgroundColor: barColors,
+                data: yValues
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true
+        }
+    });
+
+</script>
 {% endblock %}

@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block title %} Karyawan - Data Service {% endblock %}
+{% block title_content %} Data Karyawan {% endblock %}
+
+{% block content %}
+{% include 'karyawan/modal-karyawan.html' %}
+<nav aria-label="breadcrumb">
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="{{ url_for('home') }}">Dashboard</a></li>
+		<li class="breadcrumb-item active" aria-current="page">Data Karyawan</li>
+	</ol>
+</nav>
+<div class="border rounded p-3">
+	<div class="d-flex align-items-center justify-content-between">
+    	<p class="fw-bold text-decoration-underline">DataTable Karyawan</p>
+		<div class="d-flex mb-3 justify-content-between">
+			<button class="btn btn-primary btn-sm" id="tambah-karyawan">Tambah</button>
+		</div>
+  	</div>
+	<table id="example" class="table table-sm table-bordered table-striped table-hover">
+		<thead>
+			<tr>
+				<th class="table-fit">No.</th>
+				<th>Nama</th>
+				<th>No. Telepon</th>
+				<th>Tanggal Masuk</th>
+				<th>Jabatan</th>
+				<th class="text-center" colspan="2">Aksi</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for data in karyawan %}
+			<tr class="align-middle">
+				<td class="text-center">{{ loop.index }}</td>
+				<td>{{data.nama}}</td>
+				<td>{{ data.no_tlpn if data.no_tlpn else 'Belum ada'}}</td>
+				<td>---</td> <!-- Tanggal Masuk -->
+				<td>---</td> <!-- Jabatan -->
+				<td class="table-fit">
+					<form action="{{ url_for('ubah_karyawan', id=data.id)}}">
+						<button type="submit" class="btn btn-secondary btn-sm">
+							<i class="fa-solid fa-pen-to-square"></i>
+						</button>
+					</form>
+				</td>
+				<td class="table-fit">
+					<form action="{{ url_for('hapus_karyawan', id=data.id) }}" method="POST">
+						<button type="submit" class="btn btn-danger btn-sm"
+							onclick="return confirm('Apakah anda yakin hapus?');">
+							<i class="fa-solid fa-trash"></i>
+						</button>
+					</form>
+				</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+</div>
+
+<script>
+	document.querySelector('#tambah-karyawan').addEventListener('click', function () {
+		var myModal = new bootstrap.Modal(document.getElementById('myModal'));
+		myModal.show();
+	});
+</script>
+{% endblock %}

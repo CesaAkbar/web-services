@@ -43,9 +43,26 @@ def upload_file():
 
 ###################################################
 
+
+@app.before_request
+def require_login():
+
+    public_routes = [
+        'login',
+        'logout',
+        'static'
+    ]
+
+    if request.endpoint in public_routes:
+        return
+
+    if 'username' not in session:
+        return redirect(url_for('login'))
+
 @app.route('/')
 def home():
     if 'username' in session:
+        print(session)
         return render_template('home/dashboard.html')
 
     return redirect(url_for('login'))
@@ -53,9 +70,12 @@ def home():
 
 @app.route('/data-services')
 def data_services():
-    data_list = Services().tampil_services()
-
-    return render_template('service/data-service.html', service=data_list)
+    if 'username' in session:
+        print(session)
+        data_list = Services().tampil_services()
+        print(session)
+        return render_template('service/data-service.html', service=data_list)
+    return redirect(url_for('login'))
 
 
 @app.route('/tambah-services/<int:id>', methods=['POST', 'GET'])

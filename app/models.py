@@ -269,6 +269,26 @@ class Complation:
         koneksi.close()
         return data
 
+
+#Data Chart
+class Chart:
+    def tampil_semua_chart_by_month(self, bulan):
+        koneksi = Database().koneksi()
+        cursor = koneksi.cursor(DictCursor)
+        cursor.execute('''select customer.no_spk,
+                            customer.nama,
+                            customer.alamat,
+                            customer.tgl_spk,
+                            service_ac.tanggal_selesai,
+                            service_ac.keterangan_service,
+                            datediff(service_ac.tanggal_selesai, customer.tgl_spk) as waktu_service
+                            from service_ac join customer on customer.id = service_ac.customer_id
+                            where month(service_ac.tanggal_selesai) = %s ''', (bulan,))
+        data = cursor.fetchall()
+        cursor.close()
+        koneksi.close()
+        return data
+
 #Data 1 Hari Service
 class Dispath:
     def tampil_data_dispath(self, bulan):

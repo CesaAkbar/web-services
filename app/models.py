@@ -318,8 +318,11 @@ class Login (object):
     def authenticate(self):
         koneksi = Database().koneksi()
         cursor = koneksi.cursor()
-        cursor.execute("select count(*) from pengguna where username = %s and password = %s",(self.username, self.password) )
-        n = (cursor.fetchone()) [0]
+        cursor.execute("select count(*) as total from pengguna where username = %s and password = %s",(self.username, self.password) )
+        data = cursor.fetchone()
+        n = data['total']
+        print(n)
+        print(type(n))
         cursor.close()
         koneksi.close()
         return True if n == 1 else False

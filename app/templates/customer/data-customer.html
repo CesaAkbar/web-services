@@ -43,7 +43,7 @@
                 <td>{{data.no_spk}}</td>
                 <td class="table-fit">
                     {{ data.tgl_spk.strftime('%d-%m-%Y') if data.tgl_spk else 'None' }}
-                </td>
+                </td> 
                 <td>{{data.nama}}</td>
                 <td>{{data.alamat}}</td>
                 <td class="text-center table-fit">{{data.no_tlpn}}</td>
@@ -72,6 +72,6 @@
     document.querySelector('#tambah-customer').addEventListener('click', function() {
       var modalCustomer = new bootstrap.Modal(document.getElementById('modalCustomer'));
       modalCustomer.show();
-    });
+    });    
 </script>
 {% endblock %}

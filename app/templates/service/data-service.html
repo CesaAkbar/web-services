@@ -12,8 +12,8 @@
 </nav>
 <div class="border rounded p-3">
     <div class="d-flex align-items-center justify-content-between">
-    	<p class="fw-bold text-decoration-underline">DataTable Service</p>
-  	</div>
+        <p class="fw-bold text-decoration-underline">DataTable Service</p>
+    </div>
     <table id="example" class="table table-sm table-bordered table-striped table-hover">
         <thead class="thead-light">
             <tr class="align-middle">
@@ -34,63 +34,80 @@
             </tr>
         </thead>
         {% for data in service %}
-            <tr>
-                <td class="text-center">{{ loop.index }}</td>
-                <td class="px-2">{{data.no_spk}}</td>
-                <td class="px-2">{{data.nama}}</td>
-                <td class="px-2">{{data.alamat}}</td>
-                <td class="px-2 text-center">{{data.no_tlpn}}</td>
-                <td class="px-2">
-                    {{ data.tgl_spk.strftime('%d-%m-%Y') if data.tanggal_kunjungan else 'None' }}
-                </td>
-                <td class="px-2">
-                    {{ data.tanggal_kunjungan.strftime('%d-%m-%Y') if data.tanggal_kunjungan else 'None' }}
-                </td>
-                <td class="px-2">
-                    {{ data.tanggal_selesai.strftime('%d-%m-%Y') if data.tanggal_selesai else 'None' }}
-                </td>
-                <td class="px-2">{{data.remark_unit}}</td>
-                <td class="px-2">{{data['teknisi.nama']}}</td>
-                <td class="px-2 text-center">
-                    {% if data.waktu_service is none %} 
-                        belum ada 
-                    {%else%} 
-                        {{data.waktu_service}} Hari
-                    {% endif %} 
-                </td>
-                <td class="px-2 text-center">
-                    {{ data['status_pekerjaan'] if data['status_pekerjaan'] else 'Belum' }}
-                </td>
-                <td class="px-2 text-center">{{ data['keterangan_service'] }}</td>
-                {% if data['service_ac.id'] %} 
-                    <td class="table-fit text-center px-2">
-                        <form action="{{ url_for('ubah_services', id=data['service_ac.id'])}}">
-                            <button type="submit" class="btn btn-secondary btn-sm">Ubah</button>
-                        </form>       
-                    </td>   
-                    <td class="table-fit text-center px-2">
-                        <form action="{{ url_for('hapus_services', id=data['service_ac.id'])}}">
-                            <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
-                        </form>
-                    </td>                   
+        <tr>
+            <td class="text-center">{{ loop.index }}</td>
+            <td class="px-2">{{data.no_spk}}</td>
+            <td class="px-2">{{data.nama}}</td>
+            <td class="px-2">{{data.alamat}}</td>
+            <td class="px-2 text-center">{{data.no_tlpn}}</td>
+            <td class="px-2">
+                {{ data.tgl_spk.strftime('%d-%m-%Y') if data.tanggal_kunjungan else 'None' }}
+            </td>
+            <td class="px-2">
+                {{ data.tanggal_kunjungan.strftime('%d-%m-%Y') if data.tanggal_kunjungan else 'None' }}
+            </td>
+            <td class="px-2">
+                {{ data.tanggal_selesai.strftime('%d-%m-%Y') if data.tanggal_selesai else 'None' }}
+            </td>
+            <td class="px-2">{{data.remark_unit}}</td>
+            <td class="px-2">{{data['teknisi.nama']}}</td>
+            <td class="px-2 text-center">
+                {% if data.waktu_service is none %}
+                belum ada
                 {%else%}
-                    <td class="align-middle table-fit text-center px-2">
-                        Tambah    
-                    </td>
-                    <td class="table-fit text-center px-2">
-                        <form action="{{ url_for('tambah_services', id=data.id)}}">
-                            <button type="submit" class="btn btn-success btn-sm">Jadwal</button>
-                        </form>
-                    </td>
-                {% endif %} 
-            </tr>
+                {{data.waktu_service}} Hari
+                {% endif %}
+            </td>
+            <td class="px-2 text-center">
+                {{ data['status_pekerjaan'] if data['status_pekerjaan'] else 'Belum' }}
+            </td>
+            <td class="px-2 text-center">{{ data['keterangan_service'] }}</td>
+            {% if data['service_ac.id'] %}
+            <td class="table-fit text-center px-2">
+                <form action="{{ url_for('ubah_services', id=data['service_ac.id'])}}">
+                    <button type="submit" class="btn btn-secondary btn-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-pencil preview-icon">
+                            <path
+                                d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
+                            <path d="m15 5 4 4" />
+                        </svg>
+
+                    </button>
+                </form>
+            </td>
+            <td class="table-fit text-center px-2">
+                <form action="{{ url_for('hapus_services', id=data['service_ac.id'])}}">
+                    <button type="submit" class="btn btn-danger btn-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-x preview-icon">
+                            <path d="M18 6 6 18" />
+                            <path d="m6 6 12 12" />
+                        </svg>
+
+                    </button>
+                </form>
+            </td>
+            {%else%}
+            <td class="align-middle table-fit text-center px-2">
+                Tambah
+            </td>
+            <td class="table-fit text-center px-2">
+                <form action="{{ url_for('tambah_services', id=data.id)}}">
+                    <button type="submit" class="btn btn-success btn-sm">Jadwal</button>
+                </form>
+            </td>
+            {% endif %}
+        </tr>
         {% endfor %}
     </table>
-</div>  
+</div>
 <script>
-    document.querySelector('#tambah-service').addEventListener('click', function() {
-      var modalService = new bootstrap.Modal(document.getElementById('modalService'));
-      modalService.show();
+    document.querySelector('#tambah-service').addEventListener('click', function () {
+        var modalService = new bootstrap.Modal(document.getElementById('modalService'));
+        modalService.show();
     });    
 </script>
 {% endblock %}

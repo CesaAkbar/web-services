@@ -15,14 +15,41 @@
             Key Performance Indicators (KPI) CV. TWIN ANUGRAH JAYA
         </div>
     </div>
-    <div class="row mb-3">
+    <div class="row mb-3 d-flex justify-content-between">
+        <div class="col-xl-3 col-md-6">
+            <form class="card mb-4">
+                <div class="card-header h4">Dropdown</div>
+                <div class="card-body text-center">
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Semua Bulan</option>
+                        <option value="1">Januari</option>
+                        <option value="2">Febuari</option>
+                        <option value="3">Maret</option>
+                        <option value="4">April</option>
+                        <option value="5">Mei</option>
+                        <option value="6">Juni</option>
+                        <option value="7">Juli</option>
+                    </select>
+                </div>
+                <div class="card-footer d-grid">
+                    <button class="btn btn-primary">Filter</button>
+                </div>
+            </form>
+        </div>
         <div class="col-xl-3 col-md-6">
             <div class="card mb-4">
                 <div class="card-header h4">Total Perkerjaan</div>
-                <div class="card-body text-center h1">313</div>
+                <div class="card-body text-center h1">{{total_pekerjaan}}</div>
                 <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a class="small stretched-link" href="{{ url_for('data_services') }}" target="_blank">Lihat Selengkap</a>
-                    <div class="small"><i class="fas fa-angle-right"></i></div>
+                    <a class="small stretched-link" href="{{ url_for('data_services') }}" target="_blank">Lihat
+                        Selengkap</a>
+                    <div class="small">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-chevron-right preview-icon">
+                            <path d="m9 18 6-6-6-6" />
+                        </svg>
+                    </div>
                 </div>
             </div>
         </div>
@@ -83,6 +110,9 @@
     </div>
 </div>
 <script>
+    
+
+
     const chartSatuHariKunjungan = new Chart("chartSatuHariKunjungan", {
         type: 'pie',
         data: {

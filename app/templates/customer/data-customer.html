@@ -13,11 +13,11 @@
 </nav>
 <div class="border rounded p-3">
     <div class="d-flex align-items-center justify-content-between">
-    	<p class="fw-bold text-decoration-underline">DataTable Customer</p>
-		<div class="d-flex mb-3 justify-content-between">
-			<button class="btn btn-primary" id="tambah-customer">Tambah</button>
-		</div>
-  	</div>
+        <p class="fw-bold text-decoration-underline">DataTable Customer</p>
+        <div class="d-flex mb-3 justify-content-between">
+            <button class="btn btn-primary" id="tambah-customer">Tambah</button>
+        </div>
+    </div>
     <table id="example" class="table table-sm table-bordered table-striped table-hover">
         <thead class="thead-light">
             <tr class="align-middle">
@@ -43,7 +43,7 @@
                 <td>{{data.no_spk}}</td>
                 <td class="table-fit">
                     {{ data.tgl_spk.strftime('%d-%m-%Y') if data.tgl_spk else 'None' }}
-                </td> 
+                </td>
                 <td>{{data.nama}}</td>
                 <td>{{data.alamat}}</td>
                 <td class="text-center table-fit">{{data.no_tlpn}}</td>
@@ -55,12 +55,28 @@
                 <td class="table-fit text-center">{{data.garansi}}</td>
                 <td class="text-center">
                     <form action="{{ url_for('ubah_customer', id=data.id) }}">
-                        <button type="submit" class="btn btn-secondary btn-sm">Ubah</button>
+                        <button type="submit" class="btn btn-secondary btn-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-pencil preview-icon">
+                                <path
+                                    d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
+                                <path d="m15 5 4 4" />
+                            </svg>
+                        </button>
                     </form>
                 </td>
                 <td class="text-center">
                     <form action="{{ url_for('hapus_customer', id=data.id) }}" method="POST">
-                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin hapus?');">Hapus</button>
+                        <button type="submit" class="btn btn-danger btn-sm"
+                            onclick="return confirm('Apakah anda yakin hapus?');">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-x preview-icon">
+                                <path d="M18 6 6 18" />
+                                <path d="m6 6 12 12" />
+                            </svg>
+                        </button>
                     </form>
                 </td>
             </tr>
@@ -69,9 +85,9 @@
     </table>
 </div>
 <script>
-    document.querySelector('#tambah-customer').addEventListener('click', function() {
-      var modalCustomer = new bootstrap.Modal(document.getElementById('modalCustomer'));
-      modalCustomer.show();
+    document.querySelector('#tambah-customer').addEventListener('click', function () {
+        var modalCustomer = new bootstrap.Modal(document.getElementById('modalCustomer'));
+        modalCustomer.show();
     });    
 </script>
 {% endblock %}

@@ -13,11 +13,11 @@
 </nav>
 <div class="border rounded p-3">
 	<div class="d-flex align-items-center justify-content-between">
-    	<p class="fw-bold text-decoration-underline">DataTable Karyawan</p>
+		<p class="fw-bold text-decoration-underline">DataTable Karyawan</p>
 		<div class="d-flex mb-3 justify-content-between">
 			<button class="btn btn-primary btn-sm" id="tambah-karyawan">Tambah</button>
 		</div>
-  	</div>
+	</div>
 	<table id="example" class="table table-sm table-bordered table-striped table-hover">
 		<thead>
 			<tr>
@@ -30,7 +30,7 @@
 			</tr>
 		</thead>
 		<tbody>
-		{% for data in karyawan %}
+			{% for data in karyawan %}
 			<tr class="align-middle">
 				<td class="text-center">{{ loop.index }}</td>
 				<td>{{data.nama}}</td>
@@ -40,7 +40,13 @@
 				<td class="table-fit">
 					<form action="{{ url_for('ubah_karyawan', id=data.id)}}">
 						<button type="submit" class="btn btn-secondary btn-sm">
-							<i class="fa-solid fa-pen-to-square"></i>
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+								fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+								stroke-linejoin="round" class="lucide lucide-pencil preview-icon">
+								<path
+									d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
+								<path d="m15 5 4 4" />
+							</svg>
 						</button>
 					</form>
 				</td>
@@ -48,12 +54,17 @@
 					<form action="{{ url_for('hapus_karyawan', id=data.id) }}" method="POST">
 						<button type="submit" class="btn btn-danger btn-sm"
 							onclick="return confirm('Apakah anda yakin hapus?');">
-							<i class="fa-solid fa-trash"></i>
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+								fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+								stroke-linejoin="round" class="lucide lucide-x preview-icon">
+								<path d="M18 6 6 18" />
+								<path d="m6 6 12 12" />
+							</svg>
 						</button>
 					</form>
 				</td>
 			</tr>
-		{% endfor %}
+			{% endfor %}
 		</tbody>
 	</table>
 </div>
